@@ -2,6 +2,7 @@ import os
 import json
 import csv
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 RAW_DIRS = {
     "youtube": "data/raw/youtube",
@@ -20,7 +21,7 @@ def count_rows(filepath):
 
 def summarize():
     summary = {
-        "updated_at": datetime.utcnow().isoformat(),
+        "updated_at": datetime.now(ZoneInfo("Asia/Seoul")).isoformat(),
         "platforms": {},
         "total": 0,
     }

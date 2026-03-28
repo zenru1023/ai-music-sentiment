@@ -1,0 +1,97 @@
+{
+  "updated_at": "2026-03-28T14:39:47.316049+09:00",
+  "platforms": {
+    "youtube": {
+      "files": 20,
+      "comments": 7124,
+      "file_list": [
+        {
+          "file": "yt_1aZTpqKiH-M_20260328_023606.csv",
+          "comments": 403
+        },
+        {
+          "file": "yt_2EKzWNcXrM0_20260328_021819.csv",
+          "comments": 500
+        },
+        {
+          "file": "yt_4He-MET8fik_20260328_020035.csv",
+          "comments": 21
+        },
+        {
+          "file": "yt_ECLy6JnBdoY_20260328_014554.csv",
+          "comments": 500
+        },
+        {
+          "file": "yt_Ey75Xw_ikqs_20260328_020319.csv",
+          "comments": 500
+        },
+        {
+          "file": "yt_H3_E37znw18_20260328_014545.csv",
+          "comments": 119
+        },
+        {
+          "file": "yt_I_yLKjyl1N4_20260328_025522.csv",
+          "comments": 56
+        },
+        {
+          "file": "yt_QjHRZcFD6q4_20260328_023256.csv",
+          "comments": 114
+        },
+        {
+          "file": "yt_QtZDkgzjmQI_20260328_023703.csv",
+          "comments": 500
+        },
+        {
+          "file": "yt_ZZ0BOEOtD2U_20260328_020114.csv",
+          "comments": 419
+        },
+        {
+          "file": "yt_Z_2g0L3Hzgw_20260328_023444.csv",
+          "comments": 500
+        },
+        {
+          "file": "yt_a_qhYjVyawk_20260328_022738.csv",
+          "comments": 500
+        },
+        {
+          "file": "yt_hMV3pH9rdHw_20260328_014549.csv",
+          "comments": 346
+        },
+        {
+          "file": "yt_jHrkQ928VNI_20260328_020423.csv",
+          "comments": 384
+        },
+        {
+          "file": "yt_rGremoYVMPc_20260328_025528.csv",
+          "comments": 500
+        },
+        {
+          "file": "yt_tJOUKpVPvsU_20260328_025628.csv",
+          "comments": 208
+        },
+        {
+          "file": "yt_v81xlIMSF-I_20260328_024248.csv",
+          "comments": 488
+        },
+        {
+          "file": "yt_vA63-nDMYGg_20260328_015812.csv",
+          "comments": 141
+        },
+        {
+          "file": "yt_wBf6Yfahb2I_20260328_022500.csv",
+          "comments": 500
+        },
+        {
+          "file": "yt_z4wcpevDRYQ_20260328_025329.csv",
+          "comments": 425
+        }
+      ]
+    },
+    "reddit": {
+      "files": 0,
+      "comments": 0,
+      "file_list": []
+    }
+  },
+  "total": 7124
+}

@@ -2,6 +2,7 @@
 # 대용량 원시 데이터 및 가공 데이터 제외
 data/*
 !data/.gitkeep
+!data/collection_summary.json
 # 학습된 모델 파일 (pth, pkl, joblib, h5 등) 제외
 models/*
 !models/.gitkeep
