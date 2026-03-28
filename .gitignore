@@ -3,9 +3,11 @@
 data/*
 !data/.gitkeep
 # 학습된 모델 파일 (pth, pkl, joblib, h5 등) 제외
-models/
+models/*
+!models/.gitkeep
 # 분석 결과물 (시각화 이미지, 리포트 등)
-results/
+results/*
+!results/.gitkeep
 
 # --- Python & uv ---
 # uv가 생성하는 가상 환경 폴더
