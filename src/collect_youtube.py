@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MAX_COMMENTS_PER_VIDEO = 5000
+MAX_COMMENTS_PER_VIDEO = 10000
 OUTPUT_DIR = "data/raw/youtube"
 
 
@@ -23,7 +23,7 @@ def already_collected(video_id):
     return any(f.startswith(f"yt_{video_id}_") for f in existing)
 
 
-def fetch_comments(youtube, video_id, max_comments=500):
+def fetch_comments(youtube, video_id, max_comments=10000):
     comments = []
     next_page_token = None
 
@@ -35,7 +35,7 @@ def fetch_comments(youtube, video_id, max_comments=500):
                 maxResults=min(100, max_comments - len(comments)),
                 pageToken=next_page_token,
                 textFormat="plainText",
-                order="relevance"
+                order="time"
             ).execute()
 
         except Exception as e:
