@@ -3,6 +3,7 @@
 data/*
 !data/.gitkeep
 !data/collection_summary.json
+!data/video_ids.txt
 # 학습된 모델 파일 (pth, pkl, joblib, h5 등) 제외
 models/*
 !models/.gitkeep

@@ -1,10 +1,14 @@
 {
-  "updated_at": "2026-03-29T02:41:23.387291+00:00",
+  "updated_at": "2026-03-29T03:55:13.597088+00:00",
   "platforms": {
     "youtube": {
-      "files": 27,
-      "comments": 17622,
+      "files": 49,
+      "comments": 31662,
       "file_list": [
+        {
+          "file": "yt_0Fs5UaGImIg_20260329_035458.csv",
+          "comments": 1042
+        },
         {
           "file": "yt_1D4FAvqy8aQ_20260329_023117.csv",
           "comments": 221
@@ -18,6 +22,10 @@
           "comments": 975
         },
         {
+          "file": "yt_2PYM5yC0WTQ_20260329_032606.csv",
+          "comments": 274
+        },
+        {
           "file": "yt_3XVfWmpnc2A_20260329_023136.csv",
           "comments": 754
         },
@@ -26,8 +34,20 @@
           "comments": 21
         },
         {
+          "file": "yt_7DS95WaJ1Co_20260329_033513.csv",
+          "comments": 1016
+        },
+        {
+          "file": "yt_83AMEkxinyo_20260329_031347.csv",
+          "comments": 72
+        },
+        {
           "file": "yt_8yKrrPPEm10_20260329_023146.csv",
           "comments": 1032
+        },
+        {
+          "file": "yt_BrRD-0apYrY_20260329_035154.csv",
+          "comments": 897
         },
         {
           "file": "yt_CrcUJI197Vs_20260329_023058.csv",
@@ -36,6 +56,10 @@
         {
           "file": "yt_ECLy6JnBdoY_20260329_013954.csv",
           "comments": 1134
+        },
+        {
+          "file": "yt_EUBhjOToIC0_20260329_033718.csv",
+          "comments": 975
         },
         {
           "file": "yt_Ey75Xw_ikqs_20260329_014011.csv",
@@ -54,6 +78,18 @@
           "comments": 55
         },
         {
+          "file": "yt_JXFn32yhvh4_20260329_033445.csv",
+          "comments": 918
+        },
+        {
+          "file": "yt_PaFZNuBXlEU_20260329_031338.csv",
+          "comments": 170
+        },
+        {
+          "file": "yt_Qfhxy3WGHLY_20260329_035204.csv",
+          "comments": 985
+        },
+        {
           "file": "yt_QjHRZcFD6q4_20260329_014043.csv",
           "comments": 114
         },
@@ -66,12 +102,32 @@
           "comments": 1223
         },
         {
+          "file": "yt_UXRXq9cYTMM_20260329_035145.csv",
+          "comments": 938
+        },
+        {
+          "file": "yt_ViLn3eIn4_Y_20260329_031349.csv",
+          "comments": 54
+        },
+        {
+          "file": "yt_WBA7yTjyfds_20260329_032840.csv",
+          "comments": 730
+        },
+        {
+          "file": "yt_YcvXNdkKQxE_20260329_033435.csv",
+          "comments": 454
+        },
+        {
           "file": "yt_ZZ0BOEOtD2U_20260329_014002.csv",
           "comments": 419
         },
         {
           "file": "yt_Z_2g0L3Hzgw_20260329_014050.csv",
           "comments": 784
+        },
+        {
+          "file": "yt_a4Ss8zvWEGg_20260329_031350.csv",
+          "comments": 46
         },
         {
           "file": "yt_aQC0FI_asKY_20260329_023153.csv",
@@ -82,6 +138,22 @@
           "comments": 1148
         },
         {
+          "file": "yt_annT8WLYZtk_20260329_035125.csv",
+          "comments": 648
+        },
+        {
+          "file": "yt_dYH8jifXeio_20260329_035135.csv",
+          "comments": 927
+        },
+        {
+          "file": "yt_eVlFcpX1VGA_20260329_031346.csv",
+          "comments": 798
+        },
+        {
+          "file": "yt_gyXjazZnJAU_20260329_032955.csv",
+          "comments": 1020
+        },
+        {
           "file": "yt_hMV3pH9rdHw_20260329_013943.csv",
           "comments": 346
         },
@@ -90,8 +162,24 @@
           "comments": 384
         },
         {
+          "file": "yt_mUQCcfcpTek_20260329_033727.csv",
+          "comments": 841
+        },
+        {
+          "file": "yt_qLIosCiA4jA_20260329_032609.csv",
+          "comments": 284
+        },
+        {
+          "file": "yt_qbHplXAZeK0_20260329_033456.csv",
+          "comments": 30
+        },
+        {
           "file": "yt_rGremoYVMPc_20260329_014124.csv",
           "comments": 1189
+        },
+        {
+          "file": "yt_sIxvZfT6lnI_20260329_033455.csv",
+          "comments": 921
         },
         {
           "file": "yt_tJOUKpVPvsU_20260329_014127.csv",
@@ -116,9 +204,37 @@
       ]
     },
     "reddit": {
-      "files": 10,
-      "comments": 5260,
+      "files": 39,
+      "comments": 16012,
       "file_list": [
+        {
+          "file": "rd_MachineLearning_AI_generated_music_20260329_032012.csv",
+          "comments": 24
+        },
+        {
+          "file": "rd_MachineLearning_AI_music_20260329_031755.csv",
+          "comments": 549
+        },
+        {
+          "file": "rd_MachineLearning_AI_music_copyright_20260329_032802.csv",
+          "comments": 280
+        },
+        {
+          "file": "rd_MachineLearning_AI_music_debate_20260329_032240.csv",
+          "comments": 95
+        },
+        {
+          "file": "rd_MachineLearning_AI_music_generator_20260329_032831.csv",
+          "comments": 3
+        },
+        {
+          "file": "rd_MachineLearning_AI_replacing_musicians_20260329_032642.csv",
+          "comments": 739
+        },
+        {
+          "file": "rd_MachineLearning_Suno_20260329_032117.csv",
+          "comments": 58
+        },
         {
           "file": "rd_Music_AI_generated_music_20260329_021812.csv",
           "comments": 497
@@ -156,11 +272,99 @@
           "comments": 81
         },
         {
+          "file": "rd_WeAreTheMusicMakers_AI_generated_music_20260329_030410.csv",
+          "comments": 457
+        },
+        {
+          "file": "rd_WeAreTheMusicMakers_AI_music_20260329_030121.csv",
+          "comments": 601
+        },
+        {
+          "file": "rd_WeAreTheMusicMakers_AI_music_copyright_20260329_035438.csv",
+          "comments": 449
+        },
+        {
+          "file": "rd_WeAreTheMusicMakers_AI_music_debate_20260329_030547.csv",
+          "comments": 387
+        },
+        {
+          "file": "rd_WeAreTheMusicMakers_AI_music_generator_20260329_031011.csv",
+          "comments": 2
+        },
+        {
+          "file": "rd_WeAreTheMusicMakers_AI_music_opinion_20260329_031340.csv",
+          "comments": 1142
+        },
+        {
+          "file": "rd_WeAreTheMusicMakers_AI_replacing_musicians_20260329_030948.csv",
+          "comments": 1421
+        },
+        {
+          "file": "rd_WeAreTheMusicMakers_Suno_20260329_030435.csv",
+          "comments": 131
+        },
+        {
+          "file": "rd_artificial_AI_generated_music_20260329_024234.csv",
+          "comments": 127
+        },
+        {
           "file": "rd_artificial_AI_music_20260329_024033.csv",
           "comments": 362
+        },
+        {
+          "file": "rd_artificial_AI_music_copyright_20260329_025423.csv",
+          "comments": 273
+        },
+        {
+          "file": "rd_artificial_AI_music_debate_20260329_024810.csv",
+          "comments": 313
+        },
+        {
+          "file": "rd_artificial_AI_music_generator_20260329_025536.csv",
+          "comments": 9
+        },
+        {
+          "file": "rd_artificial_AI_music_opinion_20260329_025706.csv",
+          "comments": 352
+        },
+        {
+          "file": "rd_artificial_AI_replacing_musicians_20260329_025219.csv",
+          "comments": 690
+        },
+        {
+          "file": "rd_artificial_Suno_20260329_024549.csv",
+          "comments": 343
+        },
+        {
+          "file": "rd_artificial_Suno_AI_20260329_025519.csv",
+          "comments": 18
+        },
+        {
+          "file": "rd_artificial_Udio_20260329_024635.csv",
+          "comments": 109
+        },
+        {
+          "file": "rd_udiomusic_AI_music_copyright_20260329_033756.csv",
+          "comments": 456
+        },
+        {
+          "file": "rd_udiomusic_AI_music_generator_20260329_034333.csv",
+          "comments": 477
+        },
+        {
+          "file": "rd_udiomusic_AI_music_opinion_20260329_034543.csv",
+          "comments": 306
+        },
+        {
+          "file": "rd_udiomusic_AI_replacing_musicians_20260329_033416.csv",
+          "comments": 867
+        },
+        {
+          "file": "rd_udiomusic_Suno_AI_20260329_034032.csv",
+          "comments": 74
         }
       ]
     }
   },
-  "total": 22882
+  "total": 47674
 }

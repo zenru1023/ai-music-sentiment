@@ -7,39 +7,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# 수집 동영상 ID
-VIDEO_IDS = [
-    "H3_E37znw18",
-    "hMV3pH9rdHw",
-    "ECLy6JnBdoY",
-    "vA63-nDMYGg",
-    "4He-MET8fik",
-    "ZZ0BOEOtD2U",
-    "Ey75Xw_ikqs",
-    "jHrkQ928VNI",
-    "2EKzWNcXrM0",
-    "wBf6Yfahb2I",
-    "a_qhYjVyawk",
-    "QjHRZcFD6q4",
-    "Z_2g0L3Hzgw",
-    "1aZTpqKiH-M",
-    "QtZDkgzjmQI",
-    "z4wcpevDRYQ",
-    "I_yLKjyl1N4",
-    "rGremoYVMPc",
-    "tJOUKpVPvsU",
-    "CrcUJI197Vs",
-    "U8dcFhF0Dlk",
-    "1D4FAvqy8aQ",
-    "FhhApqs2t-c",
-    "3XVfWmpnc2A",
-    "8yKrrPPEm10",
-    "aQC0FI_asKY",
-    "vY6FsswFIdY",
-    "PaFZNuBXlEU",
-    "eVlFcpX1VGA"
-]
-
 MAX_COMMENTS_PER_VIDEO = 5000
 OUTPUT_DIR = "data/raw/youtube"
 
@@ -113,6 +80,18 @@ def save_to_csv(comments, video_id):
         writer.writerows(comments)
 
     return filename
+
+
+def load_video_ids(filepath="data/video_ids.txt"):
+    with open(filepath, encoding="utf-8") as f:
+        return [
+            line.strip()
+            for line in f
+            if line.strip() and not line.startswith("#")
+        ]
+
+
+VIDEO_IDS = load_video_ids()
 
 
 def main():
