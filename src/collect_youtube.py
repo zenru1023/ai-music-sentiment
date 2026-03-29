@@ -24,11 +24,20 @@ VIDEO_IDS = [
     "Z_2g0L3Hzgw",
     "1aZTpqKiH-M",
     "QtZDkgzjmQI",
-    "v81xlIMSF-I",
     "z4wcpevDRYQ",
     "I_yLKjyl1N4",
     "rGremoYVMPc",
-    "tJOUKpVPvsU"
+    "tJOUKpVPvsU",
+    "CrcUJI197Vs",
+    "U8dcFhF0Dlk",
+    "1D4FAvqy8aQ",
+    "FhhApqs2t-c",
+    "3XVfWmpnc2A",
+    "8yKrrPPEm10",
+    "aQC0FI_asKY",
+    "vY6FsswFIdY",
+    "PaFZNuBXlEU",
+    "eVlFcpX1VGA"
 ]
 
 MAX_COMMENTS_PER_VIDEO = 5000

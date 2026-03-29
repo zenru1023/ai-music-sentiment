@@ -1,97 +1,166 @@
 {
-  "updated_at": "2026-03-28T06:03:29.838574+00:00",
+  "updated_at": "2026-03-29T02:41:23.387291+00:00",
   "platforms": {
     "youtube": {
-      "files": 20,
-      "comments": 7124,
+      "files": 27,
+      "comments": 17622,
       "file_list": [
         {
-          "file": "yt_1aZTpqKiH-M_20260328_023606.csv",
-          "comments": 403
+          "file": "yt_1D4FAvqy8aQ_20260329_023117.csv",
+          "comments": 221
         },
         {
-          "file": "yt_2EKzWNcXrM0_20260328_021819.csv",
-          "comments": 500
+          "file": "yt_1aZTpqKiH-M_20260329_014055.csv",
+          "comments": 402
         },
         {
-          "file": "yt_4He-MET8fik_20260328_020035.csv",
+          "file": "yt_2EKzWNcXrM0_20260329_014024.csv",
+          "comments": 975
+        },
+        {
+          "file": "yt_3XVfWmpnc2A_20260329_023136.csv",
+          "comments": 754
+        },
+        {
+          "file": "yt_4He-MET8fik_20260329_013957.csv",
           "comments": 21
         },
         {
-          "file": "yt_ECLy6JnBdoY_20260328_014554.csv",
-          "comments": 500
+          "file": "yt_8yKrrPPEm10_20260329_023146.csv",
+          "comments": 1032
         },
         {
-          "file": "yt_Ey75Xw_ikqs_20260328_020319.csv",
-          "comments": 500
+          "file": "yt_CrcUJI197Vs_20260329_023058.csv",
+          "comments": 995
         },
         {
-          "file": "yt_H3_E37znw18_20260328_014545.csv",
+          "file": "yt_ECLy6JnBdoY_20260329_013954.csv",
+          "comments": 1134
+        },
+        {
+          "file": "yt_Ey75Xw_ikqs_20260329_014011.csv",
+          "comments": 947
+        },
+        {
+          "file": "yt_FhhApqs2t-c_20260329_023128.csv",
+          "comments": 1100
+        },
+        {
+          "file": "yt_H3_E37znw18_20260329_013939.csv",
           "comments": 119
         },
         {
-          "file": "yt_I_yLKjyl1N4_20260328_025522.csv",
-          "comments": 56
+          "file": "yt_I_yLKjyl1N4_20260329_014113.csv",
+          "comments": 55
         },
         {
-          "file": "yt_QjHRZcFD6q4_20260328_023256.csv",
+          "file": "yt_QjHRZcFD6q4_20260329_014043.csv",
           "comments": 114
         },
         {
-          "file": "yt_QtZDkgzjmQI_20260328_023703.csv",
-          "comments": 500
+          "file": "yt_QtZDkgzjmQI_20260329_014106.csv",
+          "comments": 1223
         },
         {
-          "file": "yt_ZZ0BOEOtD2U_20260328_020114.csv",
+          "file": "yt_U8dcFhF0Dlk_20260329_023110.csv",
+          "comments": 1223
+        },
+        {
+          "file": "yt_ZZ0BOEOtD2U_20260329_014002.csv",
           "comments": 419
         },
         {
-          "file": "yt_Z_2g0L3Hzgw_20260328_023444.csv",
-          "comments": 500
+          "file": "yt_Z_2g0L3Hzgw_20260329_014050.csv",
+          "comments": 784
         },
         {
-          "file": "yt_a_qhYjVyawk_20260328_022738.csv",
-          "comments": 500
+          "file": "yt_aQC0FI_asKY_20260329_023153.csv",
+          "comments": 634
         },
         {
-          "file": "yt_hMV3pH9rdHw_20260328_014549.csv",
+          "file": "yt_a_qhYjVyawk_20260329_014041.csv",
+          "comments": 1148
+        },
+        {
+          "file": "yt_hMV3pH9rdHw_20260329_013943.csv",
           "comments": 346
         },
         {
-          "file": "yt_jHrkQ928VNI_20260328_020423.csv",
+          "file": "yt_jHrkQ928VNI_20260329_014014.csv",
           "comments": 384
         },
         {
-          "file": "yt_rGremoYVMPc_20260328_025528.csv",
-          "comments": 500
+          "file": "yt_rGremoYVMPc_20260329_014124.csv",
+          "comments": 1189
         },
         {
-          "file": "yt_tJOUKpVPvsU_20260328_025628.csv",
+          "file": "yt_tJOUKpVPvsU_20260329_014127.csv",
           "comments": 208
         },
         {
-          "file": "yt_v81xlIMSF-I_20260328_024248.csv",
-          "comments": 488
-        },
-        {
-          "file": "yt_vA63-nDMYGg_20260328_015812.csv",
+          "file": "yt_vA63-nDMYGg_20260329_013956.csv",
           "comments": 141
         },
         {
-          "file": "yt_wBf6Yfahb2I_20260328_022500.csv",
-          "comments": 500
+          "file": "yt_vY6FsswFIdY_20260329_023203.csv",
+          "comments": 931
         },
         {
-          "file": "yt_z4wcpevDRYQ_20260328_025329.csv",
+          "file": "yt_wBf6Yfahb2I_20260329_014030.csv",
+          "comments": 698
+        },
+        {
+          "file": "yt_z4wcpevDRYQ_20260329_014112.csv",
           "comments": 425
         }
       ]
     },
     "reddit": {
-      "files": 0,
-      "comments": 0,
-      "file_list": []
+      "files": 10,
+      "comments": 5260,
+      "file_list": [
+        {
+          "file": "rd_Music_AI_generated_music_20260329_021812.csv",
+          "comments": 497
+        },
+        {
+          "file": "rd_Music_AI_music_20260329_021551.csv",
+          "comments": 2505
+        },
+        {
+          "file": "rd_Music_AI_music_copyright_20260329_023140.csv",
+          "comments": 266
+        },
+        {
+          "file": "rd_Music_AI_music_debate_20260329_022534.csv",
+          "comments": 168
+        },
+        {
+          "file": "rd_Music_AI_music_opinion_20260329_023613.csv",
+          "comments": 274
+        },
+        {
+          "file": "rd_Music_AI_replacing_musicians_20260329_022843.csv",
+          "comments": 680
+        },
+        {
+          "file": "rd_Music_Suno_20260329_022156.csv",
+          "comments": 348
+        },
+        {
+          "file": "rd_Music_Suno_AI_20260329_023337.csv",
+          "comments": 79
+        },
+        {
+          "file": "rd_Music_Udio_20260329_022429.csv",
+          "comments": 81
+        },
+        {
+          "file": "rd_artificial_AI_music_20260329_024033.csv",
+          "comments": 362
+        }
+      ]
     }
   },
-  "total": 7124
+  "total": 22882
 }
