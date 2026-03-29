@@ -28,10 +28,19 @@ KEYWORDS = [
     "Suno AI",
     "AI music generator",
     "AI music opinion",
+    "AI music discussion",
+    "AI music quality",
+    "AI music creativity",
+    "AI music future",
+    "AI music industry",
+    "AI music impact",
+    "AI music innovation",
+    "AI song generation",
+    "AI song writing"
 ]
 
-MAX_POSTS = 50        # 키워드당 최대 포스트 수
-MAX_COMMENTS = 100    # 포스트당 최대 댓글 수
+MAX_POSTS =  100       # 키워드당 최대 포스트 수
+MAX_COMMENTS = 1000    # 포스트당 최대 댓글 수
 
 HEADERS = {"User-Agent": "ai_music_research/1.0"}
 
