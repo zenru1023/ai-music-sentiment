@@ -24,7 +24,7 @@ uv run src/analysis/top_words.py --platform reddit
 uv run src/analysis/sentiment.py --platform youtube
 uv run src/analysis/sentiment.py --platform reddit
 
-# 3. LDA & Word2Vec (학교 고사양 컴퓨터에서 돌리길 권장)
+# 3. LDA & Word2Vec (고사양 컴퓨터에서 돌리길 권장)
 uv run src/analysis/lda.py --platform youtube --num-topics 7
 uv run src/analysis/lda.py --platform reddit --num-topics 7
 
