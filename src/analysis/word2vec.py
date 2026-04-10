@@ -133,7 +133,7 @@ def plot_tsne(model: Word2Vec, platform: str, n_words: int = 100):
     vectors = np.array([model.wv[w] for w in vocab])
 
     perplexity = min(30, len(vocab) - 1)
-    tsne = TSNE(n_components=2, random_state=42, perplexity=perplexity, n_iter=1000)
+    tsne = TSNE(n_components=2, random_state=42, perplexity=perplexity, max_iter=1000)
     coords = tsne.fit_transform(vectors)
 
     # seed words 강조 표시
