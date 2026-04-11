@@ -11,20 +11,30 @@ data/processed/reddit_cleaned.csv 로 저장
 5. 이모지 제거
 6. 소문자화
 7. 스팸 필터링
-8. 저장
+8. 불용어 제거 (구어체 호칭 / 필러 / 인터넷 슬랭)
+9. 불용어 제거 후 짧아진 댓글 재필터링
+10. 비영어 토큰 제거 (oov 필터 — typo / 비영어 알파벳 토큰)
+11. 비영어 토큰 제거 후 짧아진 댓글 재필터링
+12. 저장
 """
 
 import os
 import re
 import glob
 import pandas as pd
+import nltk
+from nltk.corpus import words as nltk_words_corpus
+
+# nltk words 코퍼스 자동 다운로드 (최초 1회)
+try:
+    nltk_words_corpus.words()
+except LookupError:
+    nltk.download("words", quiet=True)
 
 RAW_DIR = "data/raw/reddit"
 OUTPUT_PATH = "data/processed/reddit_cleaned.csv"
 
 # ── 1차 통과 조건: 파일명에서 추출한 키워드가 AI 음악 관련이어야 함 ──────────
-# collect_reddit_json.py 의 KEYWORDS 목록과 대응
-# 파일명 형식: rd_{subreddit}_{keyword_slug}_{timestamp}.csv
 AI_MUSIC_KEYWORDS = {
     "ai_music", "ai_generated_music", "suno", "udio",
     "ai_music_debate", "ai_replacing_musicians", "ai_music_copyright",
@@ -32,16 +42,13 @@ AI_MUSIC_KEYWORDS = {
     "ai_music_discussion", "ai_music_quality", "ai_music_creativity",
     "ai_music_future", "ai_music_industry", "ai_music_impact",
     "ai_music_innovation", "ai_song_generation", "ai_song_writing",
-    # 수집 시 추가된 키워드
     "ai_music_ethics", "ai_music_feedback",
 }
 
 # ── 2차 제거 조건: 텍스트 내 명백히 무관한 맥락 ──────────────────────────────
-# (코딩 AI, 금융 AI 등이 댓글에 혼입된 경우 대비)
 TEXT_BLACKLIST_PATTERNS = [
     re.compile(p, re.IGNORECASE) for p in [
         r"\b(chatgpt|gpt-?4|claude|gemini|copilot)\b(?!.{0,50}(music|song|audio|sound|track|melody|beat))",
-        # AI 코딩/텍스트 도구 언급이면서 음악 문맥이 없는 경우
     ]
 ]
 
@@ -55,11 +62,11 @@ URL_PATTERN = re.compile(
 
 SPAM_PATTERNS = [
     re.compile(p, re.IGNORECASE) for p in [
-        r"(.)\1{4,}",                        # 같은 문자 5회 이상 반복 (aaaa, !!!!)
+        r"(.)\1{4,}",
         r"\b(subscribe|sub4sub|follow me|check out my|click here|link in bio)\b",
         r"\b(buy|cheap|discount|promo|sale|offer|deal|free)\b.{0,30}\b(now|today|here|click)\b",
-        r"(first|1st)\s*[!😊🎉]*$",          # "first!" 류
-        r"^\W+$",                             # 특수문자/이모지만 있는 댓글
+        r"(first|1st)\s*[!😊🎉]*$",
+        r"^\W+$",
     ]
 ]
 
@@ -80,22 +87,62 @@ EMOJI_PATTERN = re.compile(
     flags=re.UNICODE,
 )
 
+# ── 불용어 목록 ───────────────────────────────────────────────────────────────
+# normalize_text(소문자화) 이후에 적용되므로 모두 소문자로 정의
+STOPWORDS = {
+    # 구어체 호칭
+    "bro", "bruh", "brah", "sis", "dude", "man", "dog", "dawg",
+    "homie", "mate", "fam", "guys", "buddy", "pal",
+    # 감탄사 / 필러
+    "lol", "lmao", "lmfao", "rofl", "omg", "omfg", "wtf", "wth",
+    "ngl", "tbh", "imo", "imho", "smh", "oof", "welp", "yikes",
+    "fr", "fwiw", "iirc", "afaik", "istg", "ikr", "idk",
+    # 인터넷 슬랭 / 리액션
+    "lmk", "btw", "rn", "irl", "imo", "aka",
+    "haha", "hahaha", "hehe", "lmaooo", "looool",
+    "yep", "yup", "nope", "nah", "meh",
+}
+
+# 단어 경계 기반 불용어 제거 패턴 (소문자화 이후 적용)
+_STOPWORD_PATTERN = re.compile(
+    r"\b(" + "|".join(re.escape(w) for w in STOPWORDS) + r")\b",
+    re.IGNORECASE,
+)
+
+# ── OOV(Out-of-Vocabulary) 필터 ───────────────────────────────────────────────
+# nltk words 코퍼스 기반 영어 사전 (소문자 집합)
+_ENGLISH_WORDS: set[str] = set(w.lower() for w in nltk_words_corpus.words())
+
+# 사전에 없어도 유효한 토큰으로 인정하는 화이트리스트
+# - AI 음악 관련 고유명사 / 브랜드명
+# - 음악 장르·용어
+# - 숫자 포함 토큰은 코드에서 별도 처리 (정규식)
+WHITELIST: set[str] = {
+    # AI 음악 도구 고유명사
+    "suno", "udio", "musiclm", "mubert", "aiva", "boomy", "soundraw",
+    "udiomusic", "sunoai",
+    # 음악 장르 / 용어 (사전에 없을 수 있음)
+    "lo-fi", "lofi", "hiphop", "edm", "dnb", "dubstep", "synthwave",
+    "hyperpop", "glitchcore", "vaporwave", "chiptune", "phonk",
+    "808s", "808", "bpm", "daw", "vst", "midi", "wav", "mp3", "flac",
+    # 인터넷 구어체 중 의미 있는 것 (불용어 목록과 중복 없이)
+    "gonna", "wanna", "kinda", "sorta", "gotta", "dunno",
+    "yeah", "yea", "nah",
+    # 기타 자주 쓰이는 약어
+    "ai", "ml", "llm", "tts", "api", "ui", "ux",
+    "vs", "etc", "aka",
+}
+
+# 숫자가 포함된 토큰은 화이트리스트 여부와 무관하게 유지 (4k, 808s, mp3 등)
+_HAS_DIGIT = re.compile(r"\d")
+
 
 # ── 파일명에서 키워드 슬러그 추출 ─────────────────────────────────────────────
 
 def extract_keyword_slug(filename: str) -> str:
-    """
-    파일명: rd_{subreddit}_{keyword_slug}_{timestamp}.csv
-    예시:   rd_Music_ai_music_20240101_120000.csv → 'ai_music'
-
-    타임스탬프는 숫자 8자리_숫자 6자리 형식이므로 역방향으로 제거.
-    """
     name = os.path.basename(filename).replace(".csv", "")
-    # rd_ 제거
     name = name[len("rd_"):]
-    # 타임스탬프 제거 (_YYYYMMDD_HHMMSS)
     name = re.sub(r"_\d{8}_\d{6}$", "", name)
-    # 서브레딧 제거 (첫 번째 _ 앞부분)
     parts = name.split("_", 1)
     return parts[1] if len(parts) > 1 else ""
 
@@ -133,7 +180,6 @@ def load_all_csvs(raw_dir: str) -> pd.DataFrame:
 
 
 def remove_deleted(df: pd.DataFrame) -> pd.DataFrame:
-    """[deleted] / [removed] 댓글 제거 (수집 시 걸러지지만 혹시 남은 것 대비)"""
     before = len(df)
     mask = df["text"].fillna("").apply(lambda t: bool(DELETED_PATTERN.match(t.strip())))
     df = df[~mask].copy()
@@ -196,12 +242,81 @@ def filter_spam(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def remove_stopwords(text: str) -> str:
+    """불용어를 제거하고 다중 공백을 정리한다."""
+    cleaned = _STOPWORD_PATTERN.sub("", text)
+    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
+    return cleaned
+
+
+def filter_stopwords(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    [단계 8] 불용어 토큰 제거
+    [단계 9] 제거 후 너무 짧아진 댓글 재필터링 (is_too_short 기준 동일)
+    """
+    before = len(df)
+    df["text"] = df["text"].apply(remove_stopwords)
+    print(f"\n[단계 8] 불용어 제거 완료 ({len(STOPWORDS)}개 토큰 대상)")
+
+    # 불용어 제거 후 짧아진 댓글 재필터링
+    mask = df["text"].fillna("").apply(is_too_short)
+    df = df[~mask].copy()
+    removed = before - len(df)
+    print(f"[단계 9] 불용어 제거 후 재필터링 — {before:,} → {len(df):,}개 ({removed:,}개 제거)")
+    return df
+
+
+def is_valid_token(token: str) -> bool:
+    """
+    토큰이 유효한 영어 단어인지 판별.
+    유효 조건 (하나라도 해당하면 유지):
+      1. nltk 영어 사전에 있음
+      2. 화이트리스트에 있음
+      3. 숫자를 포함함 (4k, 808s, mp3 등)
+      4. 순수 숫자 (연도, 수치 등)
+      5. 구두점만으로 구성된 토큰 (문장 부호 — 별도 처리하지 않음)
+    """
+    t = token.lower()
+    if t in _ENGLISH_WORDS:
+        return True
+    if t in WHITELIST:
+        return True
+    if _HAS_DIGIT.search(t):
+        return True
+    if not t.isalpha():          # 구두점 포함 토큰 (예: 's, n't) 유지
+        return True
+    return False
+
+
+def remove_oov_tokens(text: str) -> str:
+    """비영어 / oov 토큰을 제거하고 다중 공백을 정리한다."""
+    tokens = text.split()
+    kept = [tok for tok in tokens if is_valid_token(tok)]
+    return re.sub(r"\s{2,}", " ", " ".join(kept)).strip()
+
+
+def filter_oov(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    [단계 10] 비영어 토큰 제거 (typo / 비영어 알파벳 토큰)
+    [단계 11] 제거 후 너무 짧아진 댓글 재필터링
+    """
+    before = len(df)
+    df["text"] = df["text"].apply(remove_oov_tokens)
+    print(f"\n[단계 10] 비영어 토큰 제거 완료 (사전: nltk words {len(_ENGLISH_WORDS):,}개 + 화이트리스트 {len(WHITELIST)}개)")
+
+    mask = df["text"].fillna("").apply(is_too_short)
+    df = df[~mask].copy()
+    removed = before - len(df)
+    print(f"[단계 11] 비영어 토큰 제거 후 재필터링 — {before:,} → {len(df):,}개 ({removed:,}개 제거)")
+    return df
+
+
 def drop_empty(df: pd.DataFrame) -> pd.DataFrame:
     before = len(df)
     df = df[df["text"].str.strip().str.len() > 0].copy()
     removed = before - len(df)
     if removed:
-        print(f"\n[정리] 이모지 제거 후 빈 댓글 {removed:,}개 추가 제거")
+        print(f"\n[정리] 빈 댓글 {removed:,}개 추가 제거")
     return df
 
 
@@ -224,6 +339,8 @@ def main():
     df = filter_short(df)
     df = normalize_text(df)
     df = filter_spam(df)
+    df = filter_stopwords(df)
+    df = filter_oov(df)
     df = drop_empty(df)
 
     print("\n" + "=" * 60)
