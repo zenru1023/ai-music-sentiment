@@ -26,10 +26,29 @@ dependencies = [
     "scipy>=1.17.1",
     "seaborn>=0.13.2",
     "selenium>=4.41.0",
-    "torch>=2.11.0",
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "torchaudio>=2.6.0",
     "transformers>=5.5.0",
     "undetected-chromedriver>=3.5.5",
     "vadersentiment>=3.3.2",
     "webdriver-manager>=4.0.2",
     "wordcloud>=1.9.6",
+    "tqdm>=4.67.3",
 ]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu124" },
+]
+torchvision = [
+    { index = "pytorch-cu124" },
+]
+torchaudio = [
+    { index = "pytorch-cu124" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true

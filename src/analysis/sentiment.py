@@ -6,17 +6,18 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from tqdm import tqdm
 
 warnings.filterwarnings("ignore")
 
 # ── 경로 설정 ─────────────────────────────────────────
 
 PLATFORM_PATHS = {
-    "youtube": "data/processed/youtube_cleaned.csv",
-    "reddit":  "data/processed/reddit_cleaned.csv",
+    "youtube": "data/processed/sentiment/youtube.csv",
+    "reddit":  "data/processed/sentiment/reddit.csv",
 }
 OUTPUT_TABLES = "results/tables"
-OUTPUT_FIGURES = "results/figures"
+OUTPUT_FIGURES = "results/figures/sentiment"
 
 MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment-latest"
 LABEL_MAP = {0: "negative", 1: "neutral", 2: "positive"}
@@ -51,7 +52,7 @@ def run_transformers(df: pd.DataFrame, batch_size: int) -> pd.DataFrame:
 
     print(f"  댓글 {len(texts):,}개 처리 중 (배치 크기: {batch_size})...")
 
-    for i in range(0, len(texts), batch_size):
+    for i in tqdm(range(0, len(texts), batch_size), desc="RoBERTa Inference"):
         batch = texts[i:i + batch_size]
 
         encoded = tokenizer(
@@ -149,7 +150,7 @@ def save_results(df: pd.DataFrame, platform: str):
 # ── 메인 ─────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(description="감정 분석 — RoBERTa Only")
+    parser = argparse.ArgumentParser(description="감정 분석 — RoBERTa")
     parser.add_argument("--platform", choices=["youtube", "reddit"], required=True)
     parser.add_argument("--batch-size", type=int, default=64)
     args = parser.parse_args()
