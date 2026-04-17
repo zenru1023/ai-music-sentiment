@@ -7,72 +7,52 @@ YouTube 댓글과 Reddit 데이터를 수집하여 감정 분석, 토픽 모델�
 
 ```mermaid
 graph TD
-    %% Collection Stage
-    subgraph collection ["collection/"]
-        A[youtube_search_ids.py<br/>검색 결과 -> video_ids.txt] --> B[youtube.py<br/>order=time, 최대 10,000건]
-        C[reddit_json.py<br/>public JSON, 6개 갤러리]
+    %% Collection Phase
+    subgraph collection [collection/]
+        A[youtube_search_ids.py] --> B[youtube.py]
+        C[reddit_json.py]
     end
 
-    %% Raw Data
-    B --> D([data/raw/<br/>yt_*.csv · rd_*.csv])
-    C --> D
+    B & C --> D[data/raw/]
 
-    %% Processing Stage
-    subgraph processing ["processing/ — process.py --platform youtube/reddit --mode ..."]
-        E{{--mode sentiment<br/>감성 분석 · 정제}}
-        F{{--mode topic<br/>토픽 모델링 · 정제}}
-        G{{--mode dtm<br/>단어 행렬 생성 및 정제}}
+    %% Processing Phase
+    subgraph processing [processing/ — process.py]
+        direction TB
+        E{mode: sentiment}
+        F{mode: topic}
+        G{mode: dtm}
     end
 
-    D --> E
-    D --> F
-    D --> G
+    D --> E & F & G
 
     %% Processed Data
-    subgraph processed_data ["data/processed/"]
-        H([sentiment/youtube-reddit.csv])
-        I([topic/youtube-reddit.csv])
-        J([dtm/youtube-reddit.csv])
-    end
+    E --> H([data/processed/sentiment/])
+    F --> I([data/processed/topic/])
+    G --> J([data/processed/dtm/])
 
-    E --> H
-    F --> I
-    G --> J
-
-    %% Analysis Stage
-    subgraph analysis ["analysis/ — --platform youtube/reddit"]
-        K[sentiment.py<br/>RoBERTa · GPU]
-        L[lda.py<br/>LdaMulticore]
-        M[word2vec.py<br/>Skip-gram · 3D PCA]
+    %% Analysis Phase
+    subgraph analysis [analysis/]
+        K[sentiment.py]
+        L[lda.py]
+        M[word2vec.py]
         N[wordcloud_gen.py]
         O[top_words.py]
     end
 
     H --> K
-    I --> L
-    I --> M
-    J --> N
-    J --> O
+    I --> L & M
+    J --> N & O
 
-    %% Results Stage
-    subgraph results ["results/"]
-        P([figures/<br/>sentiment · lda · w2v · wordcloud])
-        Q([tables/<br/>sentiment · lda · top_words · w2v])
-        R([models/<br/>lda · wordvec])
+    %% Results Phase
+    subgraph results [results/]
+        P([figures/])
+        Q([tables/])
+        R([models/])
     end
 
-    K --> P
-    L --> P
-    M --> P
-    N --> P
-
-    K --> Q
-    L --> Q
-    O --> Q
-    M --> Q
-
-    L --> R
-    M --> R
+    K & L & M & N --> P
+    K & L & M & O --> Q
+    L & M --> R
 ```
 
 ## Project Structure
