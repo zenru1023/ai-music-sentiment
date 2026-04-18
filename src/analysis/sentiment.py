@@ -104,7 +104,7 @@ def plot_sentiment(df: pd.DataFrame, platform: str):
            color=[colors[l] for l in order], edgecolor="white")
 
     ax.set_title(f"RoBERTa — {platform.capitalize()}", fontsize=13)
-    ax.set_ylabel("댓글 수")
+    ax.set_ylabel("Total comments")
 
     for i, v in enumerate(counts.values):
         ax.text(i, v + max(counts.values) * 0.01,
